@@ -7,11 +7,13 @@ output:
 
 
 ## Loading and preprocessing the data
-
-
+data <- read.csv("activity.csv")
+summary(data)
 
 ## What is mean total number of steps taken per day?
-
+NA_index <- is.na(as.character(data$steps))
+data_no_NA <- data[!NA_index,]
+steps_each_day <- aggregate(steps ~ date, data = data_no_NA, sum)
 
 
 ## What is the average daily activity pattern?
